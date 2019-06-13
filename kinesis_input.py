@@ -29,7 +29,7 @@ class KinesisInputStream:
                     data.append(dict({'Data': record.encode('utf-8'), 'PartitionKey': 'partition_key'}))
                     rec_count +=1
 
-            res = self.kinesis.put_records(StreamName=self.in_stream, Records=data)
+        res = self.kinesis.put_records(StreamName=self.in_stream, Records=data)
 	    time.sleep(0.1)
 	    print(str(rec_count-res['FailedRecordCount'])+' records pushed to '+self.in_stream+' stream successfully.')
 
